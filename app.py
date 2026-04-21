@@ -3,14 +3,14 @@ import tkinter as tk
 
 window = tk.Tk()
 window.title("Random Cat Facts!")
-window.geometry("500x500")
+window.geometry("1000x500")
 window.resizable(False, False)
 
 prompt = tk.Label(window, text="Number of facts:", font=("Arial", 16))
-prompt.pack(pady=20)
+prompt.pack(pady=50)
 
 entry = tk.Entry(window, font=("Arial", 14), width=30)
-entry.pack(pady=20)
+entry.pack(pady=0)
 
 def catfacts():
     amount=entry.get()
@@ -25,13 +25,15 @@ def catfacts():
         print(fact['data'])
 
 catfacts_button = tk.Button(window, text="Learn More About Cats!", font=("Arial", 20), command=catfacts, relief="raised")
-catfacts_button.pack(pady=100)
+catfacts_button.pack(pady=80)
 
 def meow():
     print("Meow")
 
 meow_button = tk.Button(window, text="Meow", font=("Arial", 14), command=meow, relief="raised")
-meow_button.pack(pady=20)
+meow_button.pack(pady=5)
+
+photo = tk.PhotoImage(file="capybara.png")
 
 window.mainloop() 
  

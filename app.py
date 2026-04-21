@@ -15,7 +15,7 @@ entry.pack(pady=20)
 def catfacts():
     amount=entry.get()
     if not amount:
-        print("Enter a number!") 
+        print("Enter a valid number!") 
     else:
         response = requests.get(f"https://meowfacts.herokuapp.com/?count={amount}")
         if response.status_code != 200:
@@ -33,4 +33,5 @@ def meow():
 meow_button = tk.Button(window, text="Meow", font=("Arial", 14), command=meow, relief="raised")
 meow_button.pack(pady=20)
 
-window.mainloop()
+window.mainloop() 
+ 

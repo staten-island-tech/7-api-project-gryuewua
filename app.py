@@ -1,5 +1,6 @@
 import requests
 import tkinter as tk
+from PIL import Image, ImageTk
 
 window = tk.Tk()
 window.title("Random Cat Facts!")
@@ -33,7 +34,10 @@ def meow():
 meow_button = tk.Button(window, text="Meow", font=("Arial", 14), command=meow, relief="raised")
 meow_button.pack(pady=5)
 
-photo = tk.PhotoImage(file="capybara.png")
+image = Image.open("my_photo.jpg")
+photo = ImageTk.PhotoImage(image)
+label = tk.Label(window, image=photo)
+label.pack(pady=20)
 
 window.mainloop() 
  

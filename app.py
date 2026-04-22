@@ -3,7 +3,7 @@ import tkinter as tk
 
 window = tk.Tk()
 window.title("Random Cat Facts!")
-window.geometry("1000x500")
+window.geometry("1000x600")
 window.resizable(False, False)
 
 prompt = tk.Label(window, text="Number of facts:", font=("Arial", 20))

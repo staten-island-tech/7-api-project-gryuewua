@@ -14,7 +14,7 @@ entry.pack(pady=0)
 
 def catfacts():
     amount=entry.get()
-    if not amount:
+    if not amount or amount != int:
         answer.config(text="Enter a valid number!") 
     else:
         response = requests.get(f"https://meowfacts.herokuapp.com/?count={amount}")
@@ -38,4 +38,3 @@ answer = tk.Label(window, text="", font=("Arial", 16),wraplength=900)
 answer.pack(pady=100,fill="both",expand=True)
 
 window.mainloop() 
-

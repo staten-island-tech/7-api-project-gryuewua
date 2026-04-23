@@ -7,7 +7,7 @@ window.geometry("1000x600")
 window.resizable(False, False)
 
 prompt = tk.Label(window, text="Number of facts:", font=("Arial", 20))
-prompt.pack(pady=30)
+prompt.pack(pady=40)
 
 entry = tk.Entry(window, font=("Arial", 14), width=20)
 entry.pack(pady=0)
@@ -35,6 +35,15 @@ meow_button = tk.Button(window, text="Meow", font=("Arial", 20), command=meow, r
 meow_button.pack(pady=0)
 
 answer = tk.Label(window, text="", font=("Arial", 16),wraplength=900)
-answer.pack(pady=100,fill="both",expand=True)
+answer.pack(pady=20,fill="both",expand=True)
+
+def boom():
+    answer.config(text="Bro why did you do that")
+    window.after(2000, ) #add explosion picture
+    window.after(3000, window.destroy)
+    
+
+selfdestruct_button = tk.Button(window, text="DO NOT PRESS", font=("Arial", 10), command=boom, relief="raised")
+selfdestruct_button.pack(pady=0)
 
 window.mainloop() 

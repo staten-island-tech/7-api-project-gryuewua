@@ -15,23 +15,27 @@ entry.pack(pady=0)
 def catfacts():
     amount=entry.get()
     if not amount:
-        prompt.config(text="Enter a valid number!") 
+        answer.config(text="Enter a valid number!") 
     else:
         response = requests.get(f"https://meowfacts.herokuapp.com/?count={amount}")
         if response.status_code != 200:
             print("Error fetching data!")
             return None
         fact = response.json()
-        prompt.config(text=f"{fact['data']}")
+        answer.config(text=f"{fact['data']}")
+
 
 catfacts_button = tk.Button(window, text="Learn More About Cats!", font=("Arial", 20), command=catfacts, relief="raised")
 catfacts_button.pack(pady=40)
 
 def meow():
-    prompt.config(text="Meow")
+    answer.config(text="Meow")
 
 meow_button = tk.Button(window, text="Meow", font=("Arial", 20), command=meow, relief="raised")
 meow_button.pack(pady=0)
 
+answer = tk.Label(window, text="", font=("Arial", 16),wraplength=900)
+answer.pack(pady=100,fill="both",expand=True)
+
 window.mainloop() 
- 
+

@@ -24,7 +24,6 @@ def catfacts():
         fact = response.json()
         answer.config(text=f"{fact['data']}")
 
-
 catfacts_button = tk.Button(window, text="Learn More About Cats!", font=("Arial", 20), command=catfacts, relief="raised")
 catfacts_button.pack(pady=40)
 
@@ -39,11 +38,17 @@ answer.pack(pady=20,fill="both",expand=True)
 
 def boom():
     answer.config(text="Bro why did you do that")
-    window.after(2000, ) #add explosion picture
-    window.after(3000, window.destroy)
-    
+    window.after(2000,boom_action)
+    window.after(1000, window.destroy)
 
+def boom_action():
+    boom.config(image=explosion) 
+    boom.place(x=0, y=-200)
+    
 selfdestruct_button = tk.Button(window, text="DO NOT PRESS", font=("Arial", 10), command=boom, relief="raised")
-selfdestruct_button.pack(pady=0)
+selfdestruct_button.place(x=450, y=550)
+
+explosion = tk.PhotoImage(file="boom.png")
+boom=tk.Label(window)
 
 window.mainloop() 

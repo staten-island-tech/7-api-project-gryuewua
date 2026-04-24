@@ -41,10 +41,10 @@ answer.pack(pady=20,fill="both",expand=True)
 
 def boom():
     answer.config(text="Bro why did you do that")
-    window.after(2000, boom_action)
+    window.after(1000, boomaction)
     window.after(1000, window.destroy)
 
-def boom_action():
+def boomaction():
     boom.config(image=explosion) 
     boom.place(x=0, y=-200)
     

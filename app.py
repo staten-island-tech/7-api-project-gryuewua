@@ -6,6 +6,9 @@ window.title("Random Cat Facts!")
 window.geometry("1000x600")
 window.resizable(False, False)
 
+explosion = tk.PhotoImage(file="boom.png")
+boom=tk.Label(window)
+
 prompt = tk.Label(window, text="Number of facts:", font=("Arial", 20))
 prompt.pack(pady=40)
 
@@ -14,7 +17,7 @@ entry.pack(pady=0)
 
 def catfacts():
     amount=entry.get()
-    if not amount or amount != int:
+    if not amount:
         answer.config(text="Enter a valid number!") 
     else:
         response = requests.get(f"https://meowfacts.herokuapp.com/?count={amount}")
@@ -38,7 +41,7 @@ answer.pack(pady=20,fill="both",expand=True)
 
 def boom():
     answer.config(text="Bro why did you do that")
-    window.after(2000,boom_action)
+    window.after(2000, boom_action)
     window.after(1000, window.destroy)
 
 def boom_action():
@@ -47,8 +50,5 @@ def boom_action():
     
 selfdestruct_button = tk.Button(window, text="DO NOT PRESS", font=("Arial", 10), command=boom, relief="raised")
 selfdestruct_button.place(x=450, y=550)
-
-explosion = tk.PhotoImage(file="boom.png")
-boom=tk.Label(window)
 
 window.mainloop() 

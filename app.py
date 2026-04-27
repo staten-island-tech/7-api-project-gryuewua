@@ -1,5 +1,6 @@
 import requests
 import tkinter as tk
+from tkinter import ttk
 
 window = tk.Tk()
 window.title("Random Cat Facts!")
@@ -14,7 +15,7 @@ entry.pack(pady=0)
 
 def catfacts():
     amount=entry.get()
-    if not amount or amount != int:
+    if not amount:
         answer.config(text="Enter a valid number!") 
     else:
         response = requests.get(f"https://meowfacts.herokuapp.com/?count={amount}")
@@ -34,8 +35,24 @@ def meow():
 meow_button = tk.Button(window, text="Meow", font=("Arial", 20), command=meow, relief="raised")
 meow_button.pack(pady=0)
 
-answer = tk.Label(window, text="", font=("Arial", 16),wraplength=900)
-answer.pack(pady=20,fill="both",expand=True)
+canvas = tk.Canvas(window, height=50, width=200)
+scrollbar = ttk.Scrollbar(window, orient="vertical", command=canvas.yview)
+canvas.configure(yscrollcommand=scrollbar.set)
+
+frame = ttk.Frame(canvas)
+canvas.create_window((0, 0), window=frame,anchor="center")
+
+scrollbar.pack(side="right", fill="y")
+canvas.pack(side="left", fill="both", expand=True)
+
+answer = ttk.Label(window, text="", font=("Arial", 16),wraplength=900)
+""" answer.pack(pady=0,fill=tk.BOTH ,expand=True) """
+answer.pack()
+
+def update_scroll_region(event):
+    canvas.configure(scrollregion=canvas.bbox("all"))
+
+frame.bind("<Configure>", update_scroll_region)
 
 explosion = tk.PhotoImage(file="boom.png")
 

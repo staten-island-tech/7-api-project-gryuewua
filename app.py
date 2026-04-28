@@ -4,7 +4,7 @@ from tkinter import ttk
 
 window = tk.Tk()
 window.title("Random Cat Facts!")
-window.geometry("1000x600")
+window.geometry("1000x700")
 window.resizable(False, False)
 
 prompt = tk.Label(window, text="Number of facts:", font=("Arial", 20))
@@ -35,21 +35,18 @@ def meow():
 meow_button = tk.Button(window, text="Meow", font=("Arial", 20), command=meow, relief="raised")
 meow_button.pack(pady=0)
 
-canvas = tk.Canvas(window, height=50, width=200)
+canvas = tk.Canvas(window, height=20, width=400)
 scrollbar = ttk.Scrollbar(window, orient="vertical", command=canvas.yview)
 canvas.configure(yscrollcommand=scrollbar.set)
-
 frame = ttk.Frame(canvas)
-canvas.create_window((0, 0), window=frame,anchor="center")
-
+canvas.create_window((500, 200), window=frame,anchor="center")
 scrollbar.pack(side="right", fill="y")
-canvas.pack(side="left", fill="both", expand=True)
+canvas.pack(pady=20,side="top",fill="both", expand=True)
 
-answer = ttk.Label(window, text="", font=("Arial", 16),wraplength=900)
-""" answer.pack(pady=0,fill=tk.BOTH ,expand=True) """
-answer.pack()
+answer = ttk.Label(frame, text="", font=("Arial", 16),wraplength=900)
+answer.pack(pady=0,fill=tk.BOTH ,expand=True)
 
-def update_scroll_region(event):
+def update_scroll_region(event):    
     canvas.configure(scrollregion=canvas.bbox("all"))
 
 frame.bind("<Configure>", update_scroll_region)
@@ -67,6 +64,6 @@ def boomaction():
     boom.config(image=explosion) 
     
 selfdestruct_button = tk.Button(window, text="DO NOT PRESS", font=("Arial", 10), command=boom, relief="raised")
-selfdestruct_button.place(x=450, y=550)
+selfdestruct_button.pack(pady=20)
 
 window.mainloop() 

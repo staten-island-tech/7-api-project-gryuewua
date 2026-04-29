@@ -15,6 +15,7 @@ entry.pack(pady=0)
 
 def catfacts():
     amount=entry.get()
+    outputs=[]
     if not amount:
         answer.config(text="Enter a valid number!") 
     else:
@@ -24,7 +25,9 @@ def catfacts():
             answer.config(text="Error fetching data!") 
             return None
         fact = response.json()
-        answer.config(text=f"{fact['data']}")
+        outputs.append(fact['data'])
+        answer.config(text=f"{outputs}")
+        """ answer.config(text=f"{fact['data']}") """
 
 catfacts_button = tk.Button(window, text="Learn More About Cats!", font=("Arial", 20), command=catfacts, relief="raised")
 catfacts_button.pack(pady=40)
